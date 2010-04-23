@@ -9,7 +9,12 @@ js = {
 
     on_login_button_click: function() {
       VK.Auth.login(function(response) {
-        if (response.session) {} else {}
+        if (response.session) {
+          // save uid, session to server
+          VK.Api.call('getVariable', {'key': '1280'}, function(r){
+            alert('sid: ' + response.session.sid + ', uid: ' + r.response)
+          });
+        }
       });
     },
 
@@ -20,11 +25,14 @@ js = {
     },
     
     on_login: function() {
-      $('#vk_user_loggedout').hide();
-      $('#vk_user_loggedin').show();
+      VK.Observer.subscribe('auth.login', function(response) {
+        $('#vk_user_loggedout').hide();
 
-      VK.Api.call('execute', {'code': 'return API.getVariable({key: 1281});'}, function(r){
-        $('#vk_username').html(r.response);
+        // crappy username call
+        VK.Api.call('getVariable', {'key': '1281'}, function(r){
+          $('#vk_username').html(r.response);
+          $('#vk_user_loggedin').show();
+        });
       });
     }
     

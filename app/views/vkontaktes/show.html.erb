@@ -14,9 +14,6 @@
 <% content_for(:javascript) do %>
   <% javascript_tag do %>
     js.vk.init();
-    
-    VK.Observer.subscribe('auth.login', function(response) {
-      js.vk.on_login();
-    });
+    js.vk.on_login();
   <% end %>
 <% end %>

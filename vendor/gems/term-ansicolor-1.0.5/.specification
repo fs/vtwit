@@ -14,7 +14,7 @@ autorequire:
 bindir: bin
 cert_chain: []
 
-date: 2010-03-11 00:00:00 -05:00
+date: 2010-03-11 08:00:00 +03:00
 default_executable: 
 dependencies: []
 

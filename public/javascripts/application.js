@@ -1,2 +1,32 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+js = {
+  vk: {
+    init: function() {
+      VK.init({
+        apiId: '1864632',
+        nameTransportPath: '/xd_receiver.htm'
+      });
+    },
+
+    on_login_button_click: function() {
+      VK.Auth.login(function(response) {
+        if (response.session) {} else {}
+      });
+    },
+
+    on_logout_button_click: function(url) {
+      VK.Auth.logout(function() {
+        window.location = url;
+      });
+    },
+    
+    on_login: function() {
+      $('#vk_user_loggedout').hide();
+      $('#vk_user_loggedin').show();
+
+      VK.Api.call('execute', {'code': 'return API.getVariable({key: 1281});'}, function(r){
+        $('#vk_username').html(r.response);
+      });
+    }
+    
+  }
+}

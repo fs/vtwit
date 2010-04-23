@@ -50,5 +50,3 @@ config.gem 'builder',
 config.gem 'nokogiri',
            :version => '>= 1.4.0',
            :lib     => false
-
-HOST = 'localhost'

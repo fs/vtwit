@@ -23,8 +23,6 @@ Rails::Initializer.run do |config|
              :version => '>= 4.2.2'
   config.gem 'will_paginate',
              :version => '~> 2.3.12'
-  config.gem 'clearance',
-             :version => '>= 0.8.8'
   config.gem 'formtastic',
              :version => '>= 0.9.7'
   config.gem 'paperclip',

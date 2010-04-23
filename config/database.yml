@@ -1,38 +1,39 @@
-<% PASSWORD_FILE = File.join(RAILS_ROOT, '..', '..', 'shared', 'config', 'dbpassword') %>
+defaults: &defaults
+  adapter: mysql
+  socket: /var/lib/mysql/mysql.sock
+  encoding: utf8
+
+defaults_developmet: &defaults_developmet
+  host: mysql.toa
+  username: prj_vtwit
+  password:
+
+defaults_production: &defaults_production
+  username: root
+  password:
 
 development:
-  adapter: mysql
-  database: vtwit_development
-  username: root
-  password: 
-  host: localhost
-  encoding: utf8
-  
-test: &TEST
-  adapter: mysql
+  database: vtwit_dev
+  <<: *defaults
+  <<: *defaults_developmet
+
+test:
   database: vtwit_test
-  username: root
-  password: 
-  host: localhost
-  encoding: utf8
-  
-staging:
-  adapter: mysql
-  database: vtwit_staging
-  username: vtwit
-  password: <%= File.read(PASSWORD_FILE).chomp if File.readable? PASSWORD_FILE %>
-  host: localhost
-  encoding: utf8
-  socket: /var/lib/mysql/mysql.sock
-  
+  <<: *defaults
+  <<: *defaults_developmet
+
+stage:
+  database: vtwit_stage
+  <<: *defaults
+  <<: *defaults_production
+
 production:
-  adapter: mysql
   database: vtwit_production
-  username: vtwit
-  password: <%= File.read(PASSWORD_FILE).chomp if File.readable? PASSWORD_FILE %>
-  host: localhost
-  encoding: utf8
-  socket: /var/lib/mysql/mysql.sock
+  <<: *defaults
+  <<: *defaults_production
 
 cucumber:
-  <<: *TEST
+  database: vtwit_test
+  <<: *defaults
+  <<: *defaults_developmet
+  

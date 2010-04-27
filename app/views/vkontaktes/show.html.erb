@@ -3,7 +3,7 @@
 <div id="vk_api_transport"></div>
 
 <div id="vk_user_loggedout">
-  <%= link_to_function 'Войти', 'js.vk.on_login_button_click()' %>
+  <%= link_to_function 'Войти', "js.vk.on_login_button_click('#{vkontakte_url}')" %>
 </div>
 
 <div id="vk_user_loggedin" style="display:none">

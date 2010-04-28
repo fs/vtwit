@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :twitter_id
+      t.string :twitter_handle
       t.string :twitter_username
       t.string :twitter_token
       t.string :twitter_secret

@@ -1,0 +1,14 @@
+Вы вошли в Контакт как <%= link_to_vk_profile(current_vk_user) %><br />
+Вы вошли в Twitter как <%= link_to_twitter_profile(current_twitter_user) %><br />
+
+<br />
+
+<%= debug current_vk_user %>
+<%= debug current_twitter_user %>
+
+<% if @sync_exists %>
+  <%= button_to('Выключить синхронизацию!', sync_path, :method => :delete) %>
+<% else %>
+  <%= button_to('Включить синхронизацию!', sync_path) %>
+<% end %>
+

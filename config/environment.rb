@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
              :version => '>= 0.3.6'
   config.gem 'hoptoad_notifier'
   config.gem 'jrails'
+  config.gem 'httparty'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

@@ -33,6 +33,7 @@ js = {
 
           $.post(callback_url, {
             sid: response.session.sid,
+            secret: response.session.secret,
             uid: r.response.uid,
             username: r.response.username
            });

@@ -50,4 +50,11 @@ class TwittersController < ApplicationController
     flash[:success] = 'Вошли!'
     redirect_to(twitter_path)
   end
+
+  def destroy
+    flash['message'] = 'Вы вышли из Twitter'
+    self.current_twitter_user = nil
+
+    redirect_to(twitter_path)
+  end
 end

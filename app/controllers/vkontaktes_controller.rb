@@ -12,4 +12,11 @@ class VkontaktesController < ApplicationController
     render :nothing => true
   end
 
+  def destroy
+    flash['message'] = 'Вы вышли из Контакта'
+    self.current_vk_user = nil
+
+    render :nothing => true
+  end
+
 end

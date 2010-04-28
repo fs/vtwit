@@ -11,9 +11,10 @@ js = {
       VK.Auth.login();
     },
 
-    on_logout_button_click: function(url) {
+    on_logout_button_click: function(callback_url) {
       VK.Auth.logout(function() {
-        window.location = url;
+        $.post(callback_url)
+        location.reload();
       });
     },
     

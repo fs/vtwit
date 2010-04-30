@@ -1,7 +1,30 @@
 require 'httparty'
 require 'digest/md5'
+require 'active_support'
 
 module VK
+  class DesktopAuth
+
+    mattr_accessor :base_url
+    self.base_url = 'http://vkontakte.ru/login.php'
+
+    mattr_accessor :default_options
+    self.default_options = {
+      :type => 'browser',
+      :layout => 'popup'
+    }
+
+    class << self
+      def uri(app_id, options = {})
+        "#{base_url}?#{default_options.update(options).update(:app => app_id).to_query}"
+      end
+      
+      def parse(json)
+        ActiveSupport::JSON.decode(json).symbolize_keys
+      end
+    end
+  end
+
   class API
     include HTTParty
   

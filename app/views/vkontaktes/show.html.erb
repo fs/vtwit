@@ -1,21 +1,8 @@
-<% content_for(:javascript) do %>
-  <% javascript_tag do %>
-    js.vk.init();
-    js.vk.on_login();
-  <% end %>
-<% end %>
-
 <h1>Vkontakte auth</h1>
 
-<div id="vk_api_transport"></div>
-
-<div id="vk_user_loggedout">
-  <%= link_to_function 'Войти', "js.vk.on_login_button_click()" %>
-</div>
-
-<div id="vk_user_loggedin" style="display:none">
-  Привет, <div id="vk_username"></div>
-  <%= link_to_function 'Выйти', "js.vk.on_logout_button_click('#{vkontakte_url(:format => :js)}')" %>
-</div>
-
-
+<% if vk_user_loggedin? %>
+  Привет, <%= link_to_vk_profile(current_vk_user) %>
+  <%= link_to 'Выйти', vkontakte_path, :method => :delete %>
+<% else %>
+  <%= link_to('Войти в Vkontakte', new_vkontakte_path) %>
+<% end %>

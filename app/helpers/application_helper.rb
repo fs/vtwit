@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def link_to_vk_profile(vk)
-    link_to(vk.username, "http://vkontakte.ru/#{vk.uid}")
+    link_to(vk.username, "http://vkontakte.ru/#{vk.mid}")
   end
 end

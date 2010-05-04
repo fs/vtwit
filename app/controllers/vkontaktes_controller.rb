@@ -6,7 +6,7 @@ class VkontaktesController < ApplicationController
   end
 
   def new
-    redirect_to(VK::DesktopAuth.uri(VK_APP_ID, :success_url => success_vkontakte_url, :fail_url => fail_vkontakte_url))
+    redirect_to(VK::DesktopAuth.uri(VK_API_ID, :success_url => success_vkontakte_url, :fail_url => fail_vkontakte_url, :settings => 1025))
   end
 
   def success

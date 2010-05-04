@@ -7,9 +7,7 @@ class TwittersController < ApplicationController
   TWITTER_AUTH_URL = 'http://twitter.com'
 
   def new
-    @oauth_consumer = OAuth::Consumer.new(TWITTER_AUTH_KEY, TWITTER_AUTH_SECRET, { :site => TWITTER_AUTH_URL })
-
-    @request_token = @oauth_consumer.get_request_token({
+    @request_token = oauth_consumer.get_request_token({
         :oauth_callback => create_twitter_url(:user_action => params[:user_action])
       })
 
@@ -21,8 +19,7 @@ class TwittersController < ApplicationController
   end
 
   def create
-    @oauth_consumer = OAuth::Consumer.new(TWITTER_AUTH_KEY, TWITTER_AUTH_SECRET, { :site => TWITTER_AUTH_URL })
-    @request_token = OAuth::RequestToken.new(@oauth_consumer, session[:twitter_request_token], session[:twitter_request_token_secret])
+    @request_token = OAuth::RequestToken.new(oauth_consumer, session[:twitter_request_token], session[:twitter_request_token_secret])
 
     session[:twitter_request_token] = nil
     session[:twitter_request_token_secret] = nil
@@ -56,5 +53,11 @@ class TwittersController < ApplicationController
     self.current_twitter_user = nil
 
     redirect_to(twitter_path)
+  end
+
+  private
+
+  def oauth_consumer
+    @oauth_consumer ||= OAuth::Consumer.new(TWITTER_AUTH_KEY, TWITTER_AUTH_SECRET, { :site => TWITTER_AUTH_URL })
   end
 end

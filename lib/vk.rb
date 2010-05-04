@@ -34,22 +34,24 @@ module VK
 
     debug_output $stderr
 
-    def initialize(app_id, uid, sid, secret)
-      @app_id, @uid, @sid, @secret = app_id, uid, sid, secret
+    def initialize(api_id, mid, sid, secret)
+      @api_id, @mid, @sid, @secret = api_id, mid, sid, secret
     
-      self.class.default_params :app_id => app_id, :sid => sid
+      self.class.default_params :api_id => api_id, :sid => sid
     end
 
     def execute(method, params = {})
       query = params.update({:method => method})
-      self.class.post('/api.php', :query => query.update(:sig => sig(query)))
+      sig_params = self.class.default_params.update(query)
+
+      self.class.post('/api.php', :query => query.update(:sig => sig(sig_params)))
     end
 
     def sig(params)
-      params.delete(:sid)
-      sorted_params_in_string = params.stringify_keys.to_a.sort {|x,y| x[0] <=> y[0] }.map {|i| "#{i[0]}=#{i[1]}" }.join
-      Digest::MD5.hexdigest("#{@uid}#{sorted_params_in_string}#{@secret}")
-    end
+      sorted_params_in_string = params.except(:sid).stringify_keys.to_a.sort {|x,y| x[0] <=> y[0] }.map {|i| "#{i[0]}=#{i[1]}" }.join
+      sig_string = "#{@mid}#{sorted_params_in_string}#{@secret}"
 
+      Digest::MD5.hexdigest(sig_string)
+    end
   end
 end

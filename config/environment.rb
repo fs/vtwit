@@ -34,6 +34,9 @@ Rails::Initializer.run do |config|
   config.gem 'hoptoad_notifier'
   config.gem 'jrails'
   config.gem 'httparty'
+  config.gem 'oauth'
+  config.gem 'json'
+  config.gem 'whenever'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

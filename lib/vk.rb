@@ -40,6 +40,12 @@ module VK
       self.class.default_params :api_id => api_id, :sid => sid
     end
 
+    def method_missing(method, *args)
+      execute(method.to_s.split('_').join('.'), *args)
+    end
+
+    private
+
     def execute(method, params = {})
       query = params.update({:method => method})
       sig_params = self.class.default_params.update(query)

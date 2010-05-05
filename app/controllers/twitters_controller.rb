@@ -2,10 +2,6 @@ require 'oauth/consumer'
 require 'json'
 
 class TwittersController < ApplicationController
-  TWITTER_AUTH_KEY = '46MsxfZnQg02U4Rh1U7Xow'
-  TWITTER_AUTH_SECRET = 'pWMxZJyXMcMZovVWqah9244lOsH4hsOed1EVliQTPKo'
-  TWITTER_AUTH_URL = 'http://twitter.com'
-
   def new
     @request_token = oauth_consumer.get_request_token({
         :oauth_callback => create_twitter_url(:user_action => params[:user_action])

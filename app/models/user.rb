@@ -5,6 +5,8 @@ require 'vk'
 
 class User < ActiveRecord::Base
   class Twitter < OpenStruct
+    # Returs user time line http://dev.twitter.com/doc/get/statuses/user_timeline
+    #
     def statuses(count = 1)
       response = access_token.get("/statuses/user_timeline.json?count=#{count.to_i}")
 
@@ -16,8 +18,17 @@ class User < ActiveRecord::Base
       end
     end
 
+    # Returns array with user status exclude replyes
+    #
     def statuses_array(count = 1)
-      statuses(count).map { |s| s['text'] }
+      statuses(count).map { |s| s['text'] }.delete_if { |status| status =~ /^\@/}
+    end
+
+    # Update user status http://dev.twitter.com/doc/post/statuses/update
+    #
+    def update_status(status)
+      Rails.logger.info("Update Twitter status for #{handle} with `#{status}`")
+      access_token.post("/statuses/update.json?status=#{status}")
     end
 
     def consumer
@@ -42,13 +53,18 @@ class User < ActiveRecord::Base
   end
 
   class VK < OpenStruct
-    def statuses
+    def statuses(count = 1)
       response = ::VK::API.new(VK_API_ID, mid, sid, secret).activity_getHistory
       response.include?('response') ? response['response'] : []
     end
 
-    def statuses_array
-      statuses.map { |s| s['text'] }
+    def statuses_array(count = 1)
+#      statuses(count).map { |s| s['text'] }
+      ['test1', 'test2']
+    end
+
+    def update_status(status)
+      Rails.logger.info("Update VK status for #{mid} with `#{status}`")
     end
 
     class << self
@@ -74,8 +90,8 @@ class User < ActiveRecord::Base
   end
 
   def sync
-    vk_statuses = vk.statuses(10)
-    twitter_statuses = twitter.statuses(10)
+    vk_statuses = vk.statuses_array(10)
+    twitter_statuses = twitter.statuses_array(10)
 
     # push twitter statuses to vkontakte
     twitter_statuses.each do |status|
@@ -83,7 +99,7 @@ class User < ActiveRecord::Base
     end
 
     # push vk statuses to twitter
-    twitter_statuses.each do |status|
+    vk_statuses.each do |status|
       twitter.update_status(status) unless twitter_statuses.include?(status)
     end
   end

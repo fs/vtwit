@@ -1,0 +1,24 @@
+body {
+	font: 10pt/1.3em "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.slogan {
+	margin-top: 20px;
+}
+
+h2 {
+	line-height: 47px;
+	display: block;
+	font-size: 16px;
+	margin: 0;
+}
+
+.content ol li .active {
+	font-size: 20px;
+	line-height: 22px;
+	padding-top: 8px;
+}
+
+.content .action p {
+	font-size: 14px;
+}

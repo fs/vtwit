@@ -1,0 +1,291 @@
+/* --  Global definitions (begin) -- */
+@font-face {
+	font-family: "Myriad Pro";
+	src: url('/fonts/MyriadPro-Cond.otf') format('opentype');
+}
+
+@font-face {
+	font-family: "Myriad Pro";
+	src: url('/fonts/MyriadPro-BoldCond.otf') format('opentype');
+	font-weight: bold;
+}
+
+@font-face {
+	font-family: "Myriad Pro";
+	src: url('/fonts/MyriadPro-It.otf') format('opentype');
+	font-style: italic;
+}
+
+* { margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; }
+body { text-align: left; background: #fff url(layout.png) 0 -357px repeat-x; }
+body, button, input.textual, select, textarea { font: 10pt/1.2em "Myriad Pro", "Trebuchet MS", Arial, Helvetica, sans-serif; color: #333; }
+
+button, img, input, label, select { vertical-align: middle; }
+	img { -ms-interpolation-mode: bicubic; }
+div, textarea, td, th { vertical-align: top; }
+fieldset, hr, img { border: 0; }
+address { font-style: normal; }
+p { margin-bottom: 0.7em; }
+ol { list-style: decimal outside; margin: 0 0 23px 21px; }
+    ol li { margin-bottom: 6px; }
+    ol ol, ol ul { margin-top: 6px; }
+ul { list-style: none; }
+blockquote {
+    font-style: italic;
+    color: #666;
+    margin: 0 0 23px 15px;
+    quotes: "" "";
+}
+table { border-collapse: collapse; }
+    th, caption { font-weight: 400; text-align: left; }
+a, button, label { cursor: pointer; }
+    label:hover { color: #666; }
+:active, :focus { outline: none; -moz-outline-style: none; }
+::selection { color: #fff; background: #059bcd; }
+::-moz-selection { color: #fff; background: #059bcd; }
+noscript div {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	background: #fce9c0;
+	margin-bottom: -27px;
+	border: solid #dbac48;
+	border-width: 0 2px 2px;
+}
+noscript img { margin-right: 8px; }
+/* -- Global definitions (end) -- */
+
+body {
+	background:url(/images/background.png) 0 0 repeat-x #90caf2;
+	position:relative;
+	color:#134759;
+}
+
+.background-left {
+	display: block;
+	position: absolute;
+	width: 213px;
+	height: 349px;
+	left: 0;
+	top: 0;
+	background: url(/images/background-left.png) no-repeat;
+	z-index: 1;
+}
+
+.background-right {
+	display: block;
+	position: absolute;
+	width: 914px;
+	height: 795px;
+	right: 0;
+	top: 0;
+	background: url(/images/background-right.png) no-repeat;
+	z-index: 1;
+}
+
+.container {
+    z-index: 2;
+    position: relative;
+}
+
+.container .main {
+	text-align: center;
+}
+
+.logo a {
+    display:block;
+    height:275px;
+    width:300px;
+}
+
+h1 {
+	color: #fff;
+	font-size: 31px;
+	font-weight: bold;
+	text-shadow: 0 -1px 0 #000;
+	line-height: 31px;
+}
+
+.slogan {
+	background: url(/images/3-steps-shadow.png) no-repeat -10px 2px;
+	width: 724px;
+	margin: 0 auto;
+}
+
+h2 {
+	color: #eee;
+	font-size: 17px;
+	line-height: 47px;
+	text-shadow: 0 -1px 0 #000;
+	margin-top: 20px;
+	font-style: italic;
+}
+
+.content-wrap {
+	background: url(/images/content-background.png) repeat-y 13px 0;
+	width: 725px;
+	margin: 0 auto;
+}
+
+.content {
+	background: #FFF url(/images/background-content.png) repeat-x;
+	width: 607px;
+	margin: 0 auto;
+	overflow: hidden;
+	min-height: 245px;
+}
+
+.content ol {
+	float: left;
+	text-align: left;
+	font-size: 15px;
+	list-style: none;
+	margin: 10px 0 0 15px;
+	padding: 0;
+}
+
+.content ol li {
+	height: 70px;
+	width: 220px;
+}
+
+.content ol li a {
+	padding: 16px 0 10px 74px;
+	display: block;
+	font-weight: bold;
+	color: #134759;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #FFF;
+}
+
+.content ol li .active {
+	color: #134759;
+	font-weight: bold;
+	font-size: 22px;
+	padding: 11px 0 0 74px;
+	height: 70px;
+	line-height: 20px;
+}
+
+.content ol li .one {
+	background: url(/images/inactive-1.png) no-repeat 12px 10px;
+}
+
+.content ol li .one:focus, .content ol li .one:active {
+	background: url(/images/inactive-1-push.png) no-repeat 12px 10px;
+}
+
+.content ol li .two {
+	background: url(/images/inactive-2.png) no-repeat 12px 10px;
+}
+
+.content ol li .two:focus, .content ol li .two:active {
+	background: url(/images/inactive-2-push.png) no-repeat 12px 10px;
+}
+
+.content ol li .three {
+	background: url(/images/inactive-3.png) no-repeat 12px 10px;
+}
+
+.content ol li .three:focus, .content ol li .three:active {
+	background: url(/images/inactive-3-push.png) no-repeat 12px 10px;
+}
+
+.content ol li .active.one {
+	background: url(/images/active-1.png) no-repeat;
+}
+
+.content ol li .active.two {
+	background: url(/images/active-2.png) no-repeat;
+}
+
+.content ol li .active.three {
+	background: url(/images/active-3.png) no-repeat;
+}
+
+.content .action {
+	width: 360px;
+	margin: 36px 10px 0 0;
+	float: right;
+}
+
+.content .action a.yes {
+	background: url(/images/yes.png) no-repeat;
+	width: 357px;
+	height: 113px;
+	display: block;
+    text-indent: -9999em;
+}
+
+.content .action a.yes:focus, .content .action a.yes:active {
+	background: url(/images/yes-active.png) no-repeat;
+}
+
+.content .action p {
+	width: 300px;
+	text-align: left;
+	margin: 15px auto;
+	color: #134759;
+	font-size: 15px;
+	font-style: italic;
+}
+
+.content-bottom {
+	height:135px;
+	background: url(/images/content-bottom.png) no-repeat;
+	margin: 0 auto;
+	width:699px;
+}
+
+.is-it-safe {
+	position: relative;
+	width: 100%;
+	height: 1px;
+	z-index: 4;
+}
+
+.is-it-safe .bird {
+	background: url(/images/is-it-safe.png) no-repeat;
+	width: 214px;
+	height: 280px;
+	position: absolute;
+	right: 20%;
+	top: -170px;
+}
+
+.footer {
+	background:url(/images/footer.png) 0 bottom repeat-x;
+	height:373px;
+	width:100%;
+	z-index: 3;
+	color: #e6e6e6;
+	font: italic 12px "Trebuchet MS", serif;
+	line-height: 16px;
+}
+
+.footer .footer-tree {
+	width: 606px;
+	height: 373px;
+	background: url(/images/footer-tree.png) no-repeat;
+	position: relative;
+}
+
+.footer .footer-tree .copyright {
+	position: absolute;
+	bottom: 49px;
+	left: 390px;
+}
+
+.footer .footer-tree .copyright p {
+	margin: 0;
+}
+
+.footer .footer-tree .copyright p a, .footer .footer-tree .copyright p a:visited {
+	color: #e6e6e6;
+	text-decoration: none;
+}
+
+.footer .footer-tree .copyright p a:hover, .footer .footer-tree .copyright p a:focus {
+	text-decoration: underline;
+}

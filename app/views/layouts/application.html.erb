@@ -1,15 +1,46 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <title>vtwit</title>
-    <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
+    <title>Vtwit</title>
+    <%= stylesheet_link_tag 'style', :media => 'all', :cache => true %>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <!--[if lt IE 8]>
+      <link rel="stylesheet" type="text/css" href="style-ie.css" />
+    <![endif]-->
   </head>
   <body class="<%= body_class %>">
-    <%= render :partial => 'shared/menu' -%>
-    <%= render :partial => 'shared/flashes' -%>
-    <%= yield %>
+    <div class="background-left"></div>
+    <div class="background-right"></div>
+    <div class="container">
+        <div class="logo"><a href="/"><img src="images/logo.png" alt="vtwit" /></a></div>
+    	<div class="main">
+            <%= render :partial => 'shared/flashes' -%>
+            <h1>Обновление статуса из Вконтакте в ваш Twitter и обратно!</h1>
+    		<div class="slogan"><h2>Три простых шага и ваши статусы автоматически сихронизируются.</h2></div>
+       		<div class="content-wrap">
+            <div class="content">
+                <%= render :partial => 'shared/menu' -%>
+                <div class="action">
+                <%= yield %>
+                </div>
+        	</div>
+            </div>
+    		<div class="content-bottom"></div>
+        </div>
+    </div>
+    <div class="is-it-safe">
+        <div class="bird"></div>
+    </div>
+    <div class="footer">
+        <div class="footer-tree">
+            <div class="copyright">
+                <p>Разработка - Флэтсофт.</p>
+                <p><a href="http://flatsoft.com">www.flatsoft.com</a></p>
+            </div>
+        </div>
+    </div>
     <%= render :partial => 'shared/javascript' %>
   </body>
 </html>

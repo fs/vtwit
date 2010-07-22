@@ -1,5 +1,5 @@
-<div id="menu">
-  <%= link_to('Vkontakte', vkontakte_path) %> |
-  <%= link_to('Twitter', twitter_path) %> |
-  <%= link_to('Sync', sync_path) %>
-</div>
+<ol id="list">
+  <li><%= link_to('Авторизация<br />Вконтакте', vkontakte_path, :class => 'one') %></li>
+  <li><%= link_to('Авторизация<br />в Твиттер', twitter_path, :class => 'two') %></li>
+  <li><%= link_to('Готово!<br />Статистика', sync_path, :class => 'three') %></li>
+</ol>

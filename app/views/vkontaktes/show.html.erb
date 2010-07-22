@@ -1,8 +1,8 @@
-<h1>Vkontakte auth</h1>
+  <% if vk_user_loggedin? %>
+    Привет, <%= link_to_vk_profile(current_vk_user) %>
+    <%= link_to 'Выйти', vkontakte_path, :method => :delete %>
+  <% else %>
+    <%= link_to('Да. Подключить Вконтакте к Твиттеру', new_vkontakte_path, :class => 'yes') %>
+    <p>Вы увидете всплывающее окно, в котором<br />надо нажать кнопку "Разрешить".</p>
+  <% end %>
 
-<% if vk_user_loggedin? %>
-  Привет, <%= link_to_vk_profile(current_vk_user) %>
-  <%= link_to 'Выйти', vkontakte_path, :method => :delete %>
-<% else %>
-  <%= link_to('Войти в Vkontakte', new_vkontakte_path) %>
-<% end %>

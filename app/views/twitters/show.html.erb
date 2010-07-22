@@ -1,8 +1,7 @@
-<h1>Twitter</h1>
-
 <% if twitter_user_loggedin? %>
   Привет, <%= current_twitter_user.name %>
   <%= link_to 'Выйти', twitter_path, :method => :delete %>
 <% else %>
   <%= link_to(image_tag( 'Sign-in-with-Twitter-darker.png', { :alt => 'Вход в Twitter' } ), new_twitter_path) %>
 <% end %>
+

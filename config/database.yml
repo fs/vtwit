@@ -1,20 +1,39 @@
-# MySQL.  Versions 4.1 and 5.0 are recommended.
-#
-#
-# Be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+defaults: &defaults
+  adapter: mysql
+  socket: /var/lib/mysql/mysql.sock
+  encoding: utf8
+
+defaults_developmet: &defaults_developmet
+  host: mysql.toa
+  username: prj_vtwit
+  password:
+
+defaults_production: &defaults_production
+  username: root
+  password:
+
 development:
   database: vtwit_dev
   <<: *defaults
   <<: *defaults_developmet
 
 test:
-  database: vtwit_dev_test
+  database: vtwit_test
   <<: *defaults
   <<: *defaults_developmet
+
+stage:
+  database: vtwit_stage
+  <<: *defaults
+  <<: *defaults_production
 
 production:
-  database: vtwit_dev_production
+  database: vtwit_production
+  <<: *defaults
+  <<: *defaults_production
+
+cucumber:
+  database: vtwit_test
   <<: *defaults
   <<: *defaults_developmet
-
+  
